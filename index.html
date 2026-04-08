@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>TIMELINE GAME</h1>
+        <h2>drag and drop the events in chronological order</h2>
+    </header>
+    <div class="theform" id="theform">
+        <form>
+            <h3>Choose a difficulty/time frame </h3>
+            <b></b>
+            <div class="formcents">
+            <label><input type="checkbox" data-century="sixteenth" class="sixteenth">16th century</label>
+            <label><input type="checkbox" data-century="seventeenth" class="seventeenth">17th century</label>
+            <label><input type="checkbox" data-century="eighteenth" class="eighteenth">18th century</label>
+            <label><input type="checkbox" data-century="nineteenth" class="nineteenth">19th century</label>
+            <label><input type="checkbox" data-century="twentieth" class="twentieth">20th century</label>
+            </div>
+            <div class="formcards">
+            <input type="radio" id="cards-6" value="6" name="cards">
+            <label for="cards-6">6 cards</label>
+            <input type="radio" id="cards-12" value="12" name="cards">
+            <label for="cards-12">12 cards</label>
+            <input type="radio" id="cards-16" value="16" name="cards">
+            <label for="cards-16">16 cards</label>
+            <input type="checkbox" id="difficult" name="difficult">
+            <label for="difficult">Difficult Events</label>
+            </div>
+            <button type="button" id="start" class="start">Start Game!</button>
+        </form>
+        <div class="arrow" id="arrow"></div>
+    </div>
+
+    <div class="timeline">
+    <ul id="timeline-container">
+    </ul>
+    <button class="submit">submit!</button>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="script.js" defer></script>
+</body>
+</html>
