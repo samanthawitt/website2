@@ -61,8 +61,7 @@ start.addEventListener('click', async () => {
                 headers: {
                     'Content-Type': 'application/json'},
                 body: JSON.stringify({
-                    model: 'gpt-5.4-mini',
-                    input: prompt
+                    prompt: prompt
                 })
             });
 
@@ -82,14 +81,16 @@ start.addEventListener('click', async () => {
     const result = await askAI(prompt);
     console.log(result);
 
-    const aiContent = result.choices[0].message.content;
-    
-    const cleanJson = aiContent.replace(/```json|```/g, "").trim();
-    
-    const events = JSON.parse(cleanJson);
-
-    console.log(events);
-    renderCards(shuffle(events));
+    if (result && result.choices && result.choices[0]) {
+        const aiContent = result.choices[0].message.content;
+        const cleanJson = aiContent.replace(/```json|```/g, "").trim();
+        const events = JSON.parse(cleanJson);
+        
+        renderCards(shuffle(events));
+    } else {
+        console.error("API returned an unexpected format:", result);
+        alert("The AI returned an error. Check the console for details.");
+    }
     
     function renderCards(events) {
         const container = document.getElementById('timeline-container');
