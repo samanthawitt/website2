@@ -79,17 +79,22 @@ start.addEventListener('click', async () => {
     }
 
     const result = await askAI(prompt);
-    console.log(result);
-
-    if (result && result.choices && result.choices[0]) {
-        const aiContent = result.choices[0].message.content;
+    console.log("Full Result:", result);
+    
+    try {
+        const aiContent = result.output[0].content[0].text;
+        
         const cleanJson = aiContent.replace(/```json|```/g, "").trim();
+        
         const events = JSON.parse(cleanJson);
         
+        console.log("Parsed Events:", events);
         renderCards(shuffle(events));
-    } else {
-        console.error("API returned an unexpected format:", result);
-        alert("The AI returned an error. Check the console for details.");
+    
+    } catch (e) {
+        console.error("Parsing error:", e);
+        console.log("AI Content was:", result.output?.[0]?.content?.[0]?.text);
+        alert("The AI response was in an unexpected format. Check the console.");
     }
     
     function renderCards(events) {
