@@ -82,8 +82,11 @@ start.addEventListener('click', async () => {
     const result = await askAI(prompt);
     console.log(result);
 
-    const text = result.output[0].content[0].text;
-    const events = JSON.parse(text);
+    const aiContent = result.choices[0].message.content;
+    
+    const cleanJson = aiContent.replace(/```json|```/g, "").trim();
+    
+    const events = JSON.parse(cleanJson);
 
     console.log(events);
     renderCards(shuffle(events));
