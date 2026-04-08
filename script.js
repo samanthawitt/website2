@@ -56,11 +56,10 @@ start.addEventListener('click', async () => {
 
     async function askAI(prompt) {
         try {
-            const response = await fetch('https://api.openai.com/v1/responses', {
+            const response = await fetch('/api/generate', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${OPEN_AI_KEY}`},
                 body: JSON.stringify({
                     model: 'gpt-5.4-mini',
                     input: prompt
