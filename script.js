@@ -60,7 +60,8 @@ start.addEventListener('click', async () => {
             const response = await fetch('/api/generate', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${apiKey}`
                     },
                 body: JSON.stringify({
                     input: prompt
