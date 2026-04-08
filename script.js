@@ -22,7 +22,6 @@ const observeCard = card => {
 };
 
 document.querySelectorAll('.flip-card').forEach(observeCard);
-const apiKey = typeof process !== 'undefined' ? process.env.NEXT_PUBLIC_OPEN_AI_KEY : OPEN_AI_KEY;
 
 start.addEventListener('click', async () => {
 
@@ -57,13 +56,13 @@ start.addEventListener('click', async () => {
 
     async function askAI(prompt) {
         try {
-            const response = await fetch('/api/generate', {
+            const response = await fetch('https://api.openai.com/v1/responses', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${apiKey}`
-                    },
+                    'Authorization': `Bearer ${OPEN_AI_KEY}`},
                 body: JSON.stringify({
+                    model: 'gpt-5.4-mini',
                     input: prompt
                 })
             });
