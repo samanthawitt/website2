@@ -15,7 +15,7 @@ jobs:
       - name: Create config.js
         run: |
           # This writes your secret into a file that index.html can see
-          echo "const OPEN_AI_KEY = '${{ secrets.OPEN_AI__KEY }}';" > config.js
+          echo "const OPEN_AI_KEY = '${{ secrets.OPEN_AI_KEY }}';" > config.js
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
