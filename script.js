@@ -59,7 +59,7 @@ start.addEventListener('click', async () => {
             const response = await fetch('/api/generate', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'application/json'},
                 body: JSON.stringify({
                     model: 'gpt-5.4-mini',
                     input: prompt
