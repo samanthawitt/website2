@@ -22,6 +22,7 @@ const observeCard = card => {
 };
 
 document.querySelectorAll('.flip-card').forEach(observeCard);
+const apiKey = typeof process !== 'undefined' ? process.env.NEXT_PUBLIC_OPEN_AI_KEY : OPEN_AI_KEY;
 
 start.addEventListener('click', async () => {
 
